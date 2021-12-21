@@ -2,13 +2,16 @@
 # (-include to ignore error if it does not exist)
 -include .env
 
-install: solc update npm
+install: solc update npm gob
 
 # dapp deps
 update:; dapp update
 
 # npm deps for linting etc.
 npm:; yarn install
+
+# go deps for scripts
+gob:; go build
 
 # install solc version
 # example to install other versions: `make solc 0_8_2`
@@ -18,5 +21,7 @@ solc:; nix-env -f https://github.com/dapphub/dapptools/archive/master.tar.gz -iA
 # Build & test
 build  :; dapp build
 test   :; dapp test # --ffi # enable if you need the `ffi` cheat code on HEVM
+coverage :; dapp test --coverage
 clean  :; dapp clean
 lint   :; yarn run lint
+prettier :; yarn prettier
