@@ -4,7 +4,7 @@ import (
 	"github.com/buger/jsonparser"
 	"os"
 	"io/ioutil"
-	"fmt"
+	"github.com/fatih/color"
 )
 
 // Return the contract size of a given contract
@@ -14,6 +14,7 @@ func ContractSize(path string, name string) int {
 	strContent, err := jsonparser.GetString(data, "contracts", path, name, "evm", "bytecode", "object")
 
 	if err != nil {
+		color.Red(err.Error())
 		os.Exit(1)
 	}
 
@@ -27,8 +28,8 @@ func readDappOutput() []byte {
 	data, err := ioutil.ReadFile("./out/dapp.sol.json")
 
 	if err != nil {
-		fmt.Println(err);
-		fmt.Println("Please compile using dapp build")
+		color.Red(err.Error());
+		color.Red("Please compile using dapp build")
 		os.Exit(1)
 	}
 

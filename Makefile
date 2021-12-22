@@ -1,6 +1,3 @@
-# include .env file and export its env vars
-args = $(filter-out $@,$(MAKECMDGOALS))
-
 # (-include to ignore error if it does not exist)
 -include .env
 
@@ -27,4 +24,4 @@ lint   :; yarn run lint
 prettier :; yarn prettier
 
 # Scripts
-estimate:; go run ./scripts/contract_size.go $(call args)
+estimate:; go run ./scripts/contract_size.go $(PATH) $(NAME)

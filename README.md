@@ -1,4 +1,5 @@
 # dapptools-template
 Solidity template using DappTools (without Shell)
 
-### TODO Documentation
+### Estimate contract size :
+> make estimate PATH=src/Greeter.sol NAME=Greeter
