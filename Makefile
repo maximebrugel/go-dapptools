@@ -2,16 +2,13 @@
 # (-include to ignore error if it does not exist)
 -include .env
 
-install: solc update npm gob
+install: solc update npm
 
 # dapp deps
 update:; dapp update
 
 # npm deps for linting etc.
 npm:; yarn install
-
-# go deps for scripts
-gob:; go build
 
 # install solc version
 # example to install other versions: `make solc 0_8_2`
