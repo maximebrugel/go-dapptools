@@ -1,4 +1,6 @@
 # include .env file and export its env vars
+args = $(filter-out $@,$(MAKECMDGOALS))
+
 # (-include to ignore error if it does not exist)
 -include .env
 
@@ -23,3 +25,6 @@ coverage :; dapp test --coverage
 clean  :; dapp clean
 lint   :; yarn run lint
 prettier :; yarn prettier
+
+# Scripts
+estimate:; go run ./scripts/contract_size.go $(call args)
