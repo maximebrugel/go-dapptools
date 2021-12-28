@@ -24,4 +24,8 @@ lint   :; yarn run lint
 prettier :; yarn prettier
 
 # Scripts
-estimate:; go run ./scripts/contract_size.go $(PATH) $(NAME)
+
+# Estimate the contract size
+# PATH : The path to the contract (for example : "src/Greeter.sol")
+# NAME : The contract name (for example : "Greeter")
+contract-size:; go run main.go contract-size $(PATH) $(NAME)
