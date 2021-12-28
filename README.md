@@ -1,7 +1,17 @@
 # dapptools-template
 Solidity template using DappTools (without Shell)
 
-### Estimate contract size :
+### Get contract size :
 ```
-make estimate PATH=src/Greeter.sol NAME=Greeter
+make contract-size PATH=src/Greeter.sol NAME=Greeter
+```
+
+### Estimate deployment gas cost
+```
+TODO
+```
+
+###  Deploy contract
+```
+TODO
 ```
