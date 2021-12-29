@@ -1,4 +1,4 @@
-# dapptools-template
+# go-dapptools
 Solidity template using DappTools (without Shell)
 
 ### Get contract size :
