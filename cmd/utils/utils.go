@@ -9,22 +9,33 @@ import (
 
 // Return the contract size of a given contract
 func ContractSize(path string, name string) int {
-	data := readDappOutput()
+	data := ReadDappOutput()
+	bytecode := GetBytecode(data, path, name)
+	return len([]rune(bytecode)) / 2
+}
 
-	strContent, err := jsonparser.GetString(data, "contracts", path, name, "evm", "bytecode", "object")
-
+func GetBytecode(data []byte, path string, name string) string {
+	bytecode, err := jsonparser.GetString(data, "contracts", path, name, "evm", "bytecode", "object")
 	if err != nil {
 		color.Red(err.Error())
 		os.Exit(1)
 	}
+	return bytecode
+}
 
-	return len([]rune(strContent)) / 2
+func GetAbi(data []byte, path string, name string) string {
+	abi, _, _, err := jsonparser.Get(data, "contracts", path, name, "abi")
+	if err != nil {
+		color.Red(err.Error())
+		os.Exit(1)
+	}
+	return string(abi)
 }
 
 
 // DappTools creates a json file with `dapp build` 
 // It returns the content ([]byte) of this json file
-func readDappOutput() []byte {
+func ReadDappOutput() []byte {
 	data, err := ioutil.ReadFile("./out/dapp.sol.json")
 
 	if err != nil {

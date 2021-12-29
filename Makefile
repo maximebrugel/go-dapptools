@@ -29,3 +29,9 @@ prettier :; yarn prettier
 # PATH : The path to the contract (for example : "src/Greeter.sol")
 # NAME : The contract name (for example : "Greeter")
 contract-size:; go run main.go contract-size $(PATH) $(NAME)
+
+# Estimate the deployment gas cost of a smart contract
+# PATH : The path to the contract (for example : "src/Greeter.sol")
+# NAME : The contract name (for example : "Greeter")
+# ARGS : The constructor arguments to deploy
+deploy-estimate:; go run main.go deploy-estimate $(PATH) $(NAME) $(ARGS)
